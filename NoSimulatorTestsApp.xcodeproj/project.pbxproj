@@ -9,10 +9,18 @@
 /* Begin PBXBuildFile section */
 		A2A4318E2CDF23E6000F7721 /* NoSimulatorModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A431882CDF23E6000F7721 /* NoSimulatorModel.framework */; };
 		A2A4318F2CDF23E6000F7721 /* NoSimulatorModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A2A431882CDF23E6000F7721 /* NoSimulatorModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A2A4319F2CDF2755000F7721 /* NoSimulatorModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A431882CDF23E6000F7721 /* NoSimulatorModel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A2A4318C2CDF23E6000F7721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2A431682CDEF133000F7721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2A431872CDF23E6000F7721;
+			remoteInfo = NoSimulatorModel;
+		};
+		A2A431A02CDF2755000F7721 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A2A431682CDEF133000F7721 /* Project object */;
 			proxyType = 1;
@@ -38,6 +46,7 @@
 /* Begin PBXFileReference section */
 		A2A431702CDEF133000F7721 /* NoSimulatorTestsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoSimulatorTestsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A431882CDF23E6000F7721 /* NoSimulatorModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NoSimulatorModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2A4319B2CDF2755000F7721 /* NoSimulatorModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoSimulatorModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -64,6 +73,11 @@
 			path = NoSimulatorModel;
 			sourceTree = "<group>";
 		};
+		A2A4319C2CDF2755000F7721 /* NoSimulatorModelTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NoSimulatorModelTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2A431982CDF2755000F7721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2A4319F2CDF2755000F7721 /* NoSimulatorModel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,6 +112,7 @@
 			children = (
 				A2A431722CDEF133000F7721 /* NoSimulatorTestsApp */,
 				A2A431892CDF23E6000F7721 /* NoSimulatorModel */,
+				A2A4319C2CDF2755000F7721 /* NoSimulatorModelTests */,
 				A2A431712CDEF133000F7721 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +122,7 @@
 			children = (
 				A2A431702CDEF133000F7721 /* NoSimulatorTestsApp.app */,
 				A2A431882CDF23E6000F7721 /* NoSimulatorModel.framework */,
+				A2A4319B2CDF2755000F7721 /* NoSimulatorModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +187,29 @@
 			productReference = A2A431882CDF23E6000F7721 /* NoSimulatorModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		A2A4319A2CDF2755000F7721 /* NoSimulatorModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2A431A22CDF2755000F7721 /* Build configuration list for PBXNativeTarget "NoSimulatorModelTests" */;
+			buildPhases = (
+				A2A431972CDF2755000F7721 /* Sources */,
+				A2A431982CDF2755000F7721 /* Frameworks */,
+				A2A431992CDF2755000F7721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2A431A12CDF2755000F7721 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A2A4319C2CDF2755000F7721 /* NoSimulatorModelTests */,
+			);
+			name = NoSimulatorModelTests;
+			packageProductDependencies = (
+			);
+			productName = NoSimulatorModelTests;
+			productReference = A2A4319B2CDF2755000F7721 /* NoSimulatorModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -179,6 +226,9 @@
 					A2A431872CDF23E6000F7721 = {
 						CreatedOnToolsVersion = 16.1;
 						LastSwiftMigration = 1610;
+					};
+					A2A4319A2CDF2755000F7721 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
@@ -198,6 +248,7 @@
 			targets = (
 				A2A4316F2CDEF133000F7721 /* NoSimulatorTestsApp */,
 				A2A431872CDF23E6000F7721 /* NoSimulatorModel */,
+				A2A4319A2CDF2755000F7721 /* NoSimulatorModelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -211,6 +262,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A2A431862CDF23E6000F7721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2A431992CDF2755000F7721 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -234,6 +292,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2A431972CDF2755000F7721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -241,6 +306,11 @@
 			isa = PBXTargetDependency;
 			target = A2A431872CDF23E6000F7721 /* NoSimulatorModel */;
 			targetProxy = A2A4318C2CDF23E6000F7721 /* PBXContainerItemProxy */;
+		};
+		A2A431A12CDF2755000F7721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2A431872CDF23E6000F7721 /* NoSimulatorModel */;
+			targetProxy = A2A431A02CDF2755000F7721 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -495,6 +565,38 @@
 			};
 			name = Release;
 		};
+		A2A431A32CDF2755000F7721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98VS3NV9WE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.leege.NoSimulatorModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A2A431A42CDF2755000F7721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98VS3NV9WE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.leege.NoSimulatorModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -521,6 +623,15 @@
 			buildConfigurations = (
 				A2A431922CDF23E6000F7721 /* Debug */,
 				A2A431932CDF23E6000F7721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2A431A22CDF2755000F7721 /* Build configuration list for PBXNativeTarget "NoSimulatorModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2A431A32CDF2755000F7721 /* Debug */,
+				A2A431A42CDF2755000F7721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
