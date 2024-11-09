@@ -7,18 +7,43 @@
 
 import SwiftUI
 
-struct ContentView: View {
+protocol ContenViewModel: ObservableObject {
+    var dateText: String { get }
+    
+    func handleNowButtonTapped()
+}
+
+
+struct ContentView<Model: ContenViewModel>: View {
+    @StateObject var model: Model
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text(model.dateText)
+                .padding(.bottom, 28)
+            Button("Now") {
+                model.handleNowButtonTapped()
+            }
         }
         .padding()
     }
 }
 
-#Preview {
-    ContentView()
+#if DEBUG || DEBUG_SIMULATOR
+
+class ContentViewModelMock: ContenViewModel {
+    @Published var dateText: String = "Start"
+    
+    func handleNowButtonTapped() {
+        dateText = Date().description
+    }
 }
+
+
+#Preview {
+    ContentView(
+        model: ContentViewModelMock()
+    )
+}
+
+#endif

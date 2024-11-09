@@ -11,7 +11,7 @@ import SwiftUI
 struct NoSimulatorTestsAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(model: DefaultContentViewModel())
         }
     }
 }
