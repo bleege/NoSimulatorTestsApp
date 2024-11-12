@@ -17,7 +17,7 @@ struct NoSimulatorModelTests {
             date
         }
         
-        let dateManager = DefaultDateManager(dateFacotry: dateFactory)
+        let dateManager = DefaultDateManager(dateFactory: dateFactory)
         
         #expect(dateManager.now() == date)
     }

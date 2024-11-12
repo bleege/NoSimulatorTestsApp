@@ -13,14 +13,14 @@ public protocol DateManager {
 
 public class DefaultDateManager: DateManager {
     
-    private let dateFacotry: DateFactory
+    private let dateFactory: DateFactory
     
-    public init(dateFacotry: DateFactory = DefaultDateFactory()) {
-        self.dateFacotry = dateFacotry
+    public init(dateFactory: DateFactory = DefaultDateFactory()) {
+        self.dateFactory = dateFactory
     }
     
     public func now() -> Date {
-        return dateFacotry.now()
+        return dateFactory.now()
     }
 }
 
