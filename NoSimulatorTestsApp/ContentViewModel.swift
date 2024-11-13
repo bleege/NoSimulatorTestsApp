@@ -11,13 +11,20 @@ import NoSimulatorModel
 class DefaultContentViewModel: ContenViewModel {
     @Published var dateText: String = "No Time Set"
     
+    let coreDataManager: CoreDataManager
     let dateManager: DateManager
     
-    init(dateManager: DateManager = DefaultDateManager()) {
+    init(
+        coreDataManager: CoreDataManager = DefaultCoreDataManager(),
+        dateManager: DateManager = DefaultDateManager()
+    ) {
+        self.coreDataManager = coreDataManager
         self.dateManager = dateManager
     }
     
     func handleNowButtonTapped() {
-        dateText = Date().description
+        let now = dateManager.now()
+        dateText = now.description
+        coreDataManager.saveButtonTap(date: now)
     }
 }
