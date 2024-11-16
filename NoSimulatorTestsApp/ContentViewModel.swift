@@ -25,6 +25,10 @@ class DefaultContentViewModel: ContenViewModel {
     func handleNowButtonTapped() {
         let now = dateManager.now()
         dateText = now.description
-        coreDataManager.saveButtonTap(date: now)
+        do {
+            try coreDataManager.saveButtonTap(date: now)
+        } catch {
+            print("Error saving button tap: \(error.localizedDescription)")
+        }
     }
 }

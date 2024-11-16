@@ -9,7 +9,8 @@ import Foundation
 import CoreData
 
 public protocol CoreDataManager {
-    func saveButtonTap(date: Date)
+    func saveButtonTap(date: Date) throws
+    func loadAllButtonTaps() throws -> [ButtonTap]
 }
 
 public class DefaultCoreDataManager: CoreDataManager {
@@ -39,10 +40,10 @@ public class DefaultCoreDataManager: CoreDataManager {
         }
     }
     
-    public func saveButtonTap(date: Date) {
+    public func saveButtonTap(date: Date) throws {
         
         guard let context = persistentContainer?.viewContext else {
-            return
+            throw ModelErrors.noPersistentContainer
         }
         
         do {
@@ -55,5 +56,20 @@ public class DefaultCoreDataManager: CoreDataManager {
             print("Error saving button tap: \(error)")
         }
         
+    }
+    
+    public func loadAllButtonTaps() throws -> [ButtonTap] {
+        guard let context = persistentContainer?.viewContext else {
+            throw ModelErrors.noPersistentContainer
+        }
+        
+        let request: NSFetchRequest<ButtonTap> = ButtonTap.fetchRequest()
+        
+        do {
+            return try context.fetch(request)
+        } catch {
+            print("Error fetching button taps: \(error)")
+            return []
+        }
     }
 }
