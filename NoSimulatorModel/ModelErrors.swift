@@ -8,5 +8,5 @@
 import Foundation
 
 enum ModelErrors: Error {
-    case noPersistentContainer
+    case generic(_ message: String)
 }

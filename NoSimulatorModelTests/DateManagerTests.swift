@@ -8,7 +8,7 @@
 import Testing
 import NoSimulatorModel
 
-struct NoSimulatorModelTests {
+struct DateManagerTests {
 
     @Test func testNowFunction() async throws {
         let dateFactory = DateFactoryMock()
@@ -24,7 +24,7 @@ struct NoSimulatorModelTests {
 
 }
 
-extension NoSimulatorModelTests {
+extension DateManagerTests {
     class DateFactoryMock: DateFactory {
         var dateCallback: (() -> Date)?
 

@@ -15,36 +15,15 @@ public protocol CoreDataManager {
 
 public class DefaultCoreDataManager: CoreDataManager {
     
-    private var persistentContainer: NSPersistentContainer?
+    private let persistentContainer: NSPersistentContainer
         
-    public init () {
-        setupCoreDataStack()
+    public init (_ persistentContainer: NSPersistentContainer = CoreDataContainer()) {
+        self.persistentContainer = persistentContainer
     }
-    
-    private func setupCoreDataStack() {
         
-        let frameworkBundleIdentifier = "io.leege.NoSimulatorModel"
-        guard let customKitBundle = Bundle(identifier: frameworkBundleIdentifier),
-              let modelURL = customKitBundle.url(forResource: "NoSimulatorCoreDataModel", withExtension: "momd"),
-              let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
-            print("Unable to load model from bundle")
-            return
-        }
-        
-        persistentContainer = NSPersistentContainer(name: "NoSimulatorCoreDataModel", managedObjectModel: managedObjectModel)
-        
-        persistentContainer?.loadPersistentStores { _, error in
-            if let error {
-                fatalError("Unable to load persistent stores: \(error)")
-            }
-        }
-    }
-    
     public func saveButtonTap(date: Date) throws {
         
-        guard let context = persistentContainer?.viewContext else {
-            throw ModelErrors.noPersistentContainer
-        }
+        let context = persistentContainer.viewContext
         
         do {
             let buttonTap = ButtonTap(context: context)
@@ -54,22 +33,22 @@ public class DefaultCoreDataManager: CoreDataManager {
             try context.save()
         } catch {
             print("Error saving button tap: \(error)")
+            throw ModelErrors.generic("Error saving button tap.")
         }
         
     }
     
     public func loadAllButtonTaps() throws -> [ButtonTap] {
-        guard let context = persistentContainer?.viewContext else {
-            throw ModelErrors.noPersistentContainer
-        }
-        
+
+        let context = persistentContainer.viewContext
+
         let request: NSFetchRequest<ButtonTap> = ButtonTap.fetchRequest()
         
         do {
             return try context.fetch(request)
         } catch {
             print("Error fetching button taps: \(error)")
-            return []
+            throw ModelErrors.generic("Error fetching button taps.")
         }
     }
 }
