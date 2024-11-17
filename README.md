@@ -26,6 +26,8 @@ The app uses SwiftUI for the View along with a common MVVM structure using View 
 
 Testing without an iOS Simulator is configured by setting `Host Application` to `None`.
 
+Testing is peformed using `xcodebuild test -scheme NoSimulatorModelTests` and [run automatically on GitHub Workflows CI](https://github.com/bleege/NoSimulatorTestsApp/blob/fd1bf04e289aa6795cb6a2044a2adc1af4049130/.github/workflows/no-simulator-tests.yml#L22).
+
 <img width="960" alt="no-hosting-app" src="https://github.com/user-attachments/assets/5756dcf0-b0f5-4db3-ad13-ff48a22b8369">
 
 ## App Functionality
