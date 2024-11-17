@@ -47,7 +47,7 @@ public class DefaultCoreDataManager: CoreDataManager {
             key: #keyPath(
                 ButtonTap.dateTapped
             ),
-            ascending: true
+            ascending: false
         )]
         
         do {
