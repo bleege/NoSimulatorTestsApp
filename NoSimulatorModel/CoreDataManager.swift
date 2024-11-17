@@ -43,6 +43,12 @@ public class DefaultCoreDataManager: CoreDataManager {
         let context = persistentContainer.viewContext
 
         let request: NSFetchRequest<ButtonTap> = ButtonTap.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(
+            key: #keyPath(
+                ButtonTap.dateTapped
+            ),
+            ascending: true
+        )]
         
         do {
             return try context.fetch(request)
