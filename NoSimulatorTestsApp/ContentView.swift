@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol ContenViewModel: ObservableObject {
-    var dateText: String { get }
+    var buttonTaps: [ButtonTapData] { get }
     
     func handleNowButtonTapped()
 }
@@ -19,26 +19,40 @@ struct ContentView<Model: ContenViewModel>: View {
 
     var body: some View {
         VStack {
-            Text(model.dateText)
-                .padding(.bottom, 28)
-            Button("Now") {
+            Button("Generate New Tap") {
                 model.handleNowButtonTapped()
             }
+            .buttonStyle(.borderedProminent)
+            List(model.buttonTaps, id: \.id) { tap in
+                VStack {
+                    HStack {
+                        Text(tap.id.uuidString)
+                            .font(.caption)
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Text(tap.tapDate.formatted(.dateTime))
+                            .font(.caption)
+                    }
+                }
+            }
+            .listRowSeparator(.hidden)
         }
-        .padding()
+        .padding([.leading, .trailing], 0)
     }
 }
 
 #if DEBUG || DEBUG_SIMULATOR
 
 class ContentViewModelMock: ContenViewModel {
-    @Published var dateText: String = "Start"
+    @Published var buttonTaps = [
+        ButtonTapData(id: UUID(), tapDate: Date()),
+        ButtonTapData(id: UUID(), tapDate: Date())
+    ]
     
-    func handleNowButtonTapped() {
-        dateText = Date().description
-    }
+    func handleNowButtonTapped() { }
 }
-
 
 #Preview {
     ContentView(
