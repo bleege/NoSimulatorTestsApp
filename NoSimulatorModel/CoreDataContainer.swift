@@ -25,6 +25,7 @@ public class CoreDataContainer: NSPersistentContainer {
             let description = NSPersistentStoreDescription()
             description.type = NSInMemoryStoreType
             description.shouldAddStoreAsynchronously = false // Make it simpler in test env
+            description.url = URL(fileURLWithPath: "/dev/null")
                     
             persistentStoreDescriptions = [description]
         }

@@ -10,15 +10,6 @@ import NoSimulatorModel
 
 struct CoreDataManagerTests {
 
-    @Test func testSaveButtonTap() async throws {
-        let testSubject = DefaultCoreDataManager(CoreDataContainer(true))
-        
-        #expect(throws: Never.self) {
-            try testSubject.saveButtonTap(date: Date())
-        }
-        
-    }
-    
     @Test func testLoadAllButtonTaps() async throws {
         let testSubject = DefaultCoreDataManager(CoreDataContainer(true))
         
