@@ -27,14 +27,26 @@ class DefaultContentViewModel: ContenViewModel {
     func handleNowButtonTapped() {
         do {
             try modelRepository.saveButtonTap()
-            buttonTaps = try modelRepository.loadAllButtonTaps().compactMap {
-                guard let id = $0.id, let tapDate = $0.dateTapped else {
-                    return nil
-                }
-                return ButtonTapData(id: id, tapDate: tapDate)
-            }
+            try loadButtonTaps()
         } catch {
             print("Error saving button tap: \(error.localizedDescription)")
+        }
+    }
+    
+    func handleOnAppear() {
+        do {
+            try loadButtonTaps()
+        } catch {
+            print("Error loading button taps: \(error.localizedDescription)")
+        }
+    }
+    
+    private func loadButtonTaps() throws {
+        buttonTaps = try modelRepository.loadAllButtonTaps().compactMap {
+            guard let id = $0.id, let tapDate = $0.dateTapped else {
+                return nil
+            }
+            return ButtonTapData(id: id, tapDate: tapDate)
         }
     }
 }

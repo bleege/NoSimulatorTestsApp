@@ -11,6 +11,7 @@ protocol ContenViewModel: ObservableObject {
     var buttonTaps: [ButtonTapData] { get }
     
     func handleNowButtonTapped()
+    func handleOnAppear()
 }
 
 
@@ -40,6 +41,9 @@ struct ContentView<Model: ContenViewModel>: View {
             .listRowSeparator(.hidden)
         }
         .padding([.leading, .trailing], 0)
+        .onAppear {
+            model.handleOnAppear()
+        }
     }
 }
 
@@ -52,6 +56,7 @@ class ContentViewModelMock: ContenViewModel {
     ]
     
     func handleNowButtonTapped() { }
+    func handleOnAppear() { }
 }
 
 #Preview {
