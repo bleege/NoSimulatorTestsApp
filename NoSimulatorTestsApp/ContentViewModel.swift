@@ -11,22 +11,17 @@ import NoSimulatorModel
 class DefaultContentViewModel: ContenViewModel {
     @Published var dateText: String = "No Time Set"
     
-    let coreDataManager: CoreDataManager
-    let dateManager: DateManager
+    private let modelRepository: ModelRepository
     
     init(
-        coreDataManager: CoreDataManager = DefaultCoreDataManager(),
-        dateManager: DateManager = DefaultDateManager()
+        modelRepository: ModelRepository = DefaultModelRepository()
     ) {
-        self.coreDataManager = coreDataManager
-        self.dateManager = dateManager
+        self.modelRepository = modelRepository
     }
     
     func handleNowButtonTapped() {
-        let now = dateManager.now()
-        dateText = now.description
         do {
-            try coreDataManager.saveButtonTap(date: now)
+            try modelRepository.saveButtonTap()
         } catch {
             print("Error saving button tap: \(error.localizedDescription)")
         }
